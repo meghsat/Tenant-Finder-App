@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">TenantFinder_New</string>
+
+        <string-array name="planets_array">
+            <item>Bangalore</item>
+            <item>Guntur</item>
+            <item>Hyderabad</item>
+            <item>Mumbai</item>
+            <item>Vijayawada</item>
+        </string-array>
+    <string-array name="Bangalore_array">
+        <item>Bellandur</item>
+        <item>HSR Layout</item>
+        <item>Kormangala</item>
+        <item>Marthalli</item>
+        <item>Mahadevpura</item>
+        <item>white Field</item>
+    </string-array>
+    <string-array name="Hyderabad_array">
+        <item>ECIL</item>
+        <item>Madhapur</item>
+        <item>Abids</item>
+        <item>Ring Road</item>
+        <item>Amirpet</item>
+        <item>Banjara Hills</item>
+    </string-array>
+    <string-array name="vijayawada_array">
+        <item>patamata</item>
+        <item>KSN palem</item>
+        <item>Ashok nagar</item>
+        <item>Auto Nagar</item>
+        <item>Benz Circle</item>
+        <item>NTR Circle</item>
+        <item>One town</item>
+        <item>Two town</item>
+    </string-array>
+    <string-array name="Guntur_array">
+        <item>Bus Stand Road</item>
+        <item>Spencer Road</item>
+        <item>Delhi</item>
+        <item>Srinivasarao pet</item>
+        <item>Ashok Nagar</item>
+        <item>Auto Nagar</item>
+        <item>KVP colony</item>
+    </string-array>
+    <string-array name="furnishing_array">
+        <item>Semi Furnished</item>
+        <item>Fully Furnished</item>
+        <item>Not Furnished</item>
+    </string-array>
+
+</resources>
