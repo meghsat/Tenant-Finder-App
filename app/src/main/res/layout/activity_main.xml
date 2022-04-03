@@ -44,6 +44,7 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPersonName"
+            android:textColor="#F3EFEF"
             android:textColorHint="#EDE9E9"
             android:textSize="20sp" />
 
