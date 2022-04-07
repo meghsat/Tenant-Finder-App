@@ -13,16 +13,16 @@
 
         android:layout_marginEnd="24dp"
         android:orientation="vertical"
-        android:padding="8dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/LinearLayoutsub"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="370dp"
             android:orientation="vertical"
-
+android:paddingBottom="3dp"
             app:layout_constraintTop_toBottomOf="@+id/LinearLayoutmain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,44 +64,44 @@
 
             <TextView
                 android:id="@+id/address1"
-                android:layout_width="385dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
 
                 android:layout_marginTop="1dp"
                 android:text=""
                 android:textColor="#120505"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
 
             <LinearLayout
-                android:layout_width="345dp"
-                android:layout_height="80dp"
+                android:layout_width="290dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
-
                 android:background="@drawable/linearlayoutbg"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/owner1"
-                    android:layout_width="198dp"
+                    android:layout_width="178dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
 
                     android:layout_marginTop="10dp"
                     android:text=""
                     android:textColor="#120505"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
 
                 <LinearLayout
-                    android:layout_width="145dp"
-                    android:layout_height="80dp"
-                    android:orientation="vertical">
+                    android:layout_width="125dp"
+                    android:layout_height="55dp"
+                    android:orientation="vertical"
+                    android:layout_marginStart="-10dp">
 
 
                     <TextView
@@ -110,16 +110,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="40dp"
 
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:text="Reach At:"
                         android:textColor="#A60E0E"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="parent" />
 
                     <LinearLayout
-                        android:layout_width="120dp"
+                        android:layout_width="100dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="25dp"
                         android:layout_marginTop="1dp"
@@ -128,8 +128,8 @@
 
                         <ImageButton
                             android:id="@+id/phoneno"
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:layout_marginStart="10dp"
 
                             android:layout_marginTop="1dp"
@@ -141,8 +141,8 @@
 
                         <ImageButton
                             android:id="@+id/whatsapp"
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:layout_marginStart="10dp"
 
                             android:layout_marginTop="1dp"
@@ -158,7 +158,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+android:layout_marginLeft="20dp"
             android:background="#785855"
             android:gravity="center_horizontal"
             android:textSize="1sp" />
@@ -222,8 +222,8 @@
                 app:layout_constraintTop_toBottomOf="parent" />
 
             <LinearLayout
-                android:layout_width="345dp"
-                android:layout_height="80dp"
+                android:layout_width="290dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
 
@@ -232,22 +232,23 @@
 
                 <TextView
                     android:id="@+id/owner2"
-                    android:layout_width="198dp"
+                    android:layout_width="178dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
 
                     android:layout_marginTop="10dp"
                     android:text=""
                     android:textColor="#120505"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
 
                 <LinearLayout
-                    android:layout_width="145dp"
-                    android:layout_height="80dp"
-                    android:orientation="vertical">
+                    android:layout_width="125dp"
+                    android:layout_height="55dp"
+                    android:orientation="vertical"
+                    android:layout_marginStart="-10dp">
 
 
                     <TextView
@@ -259,7 +260,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Reach At:"
                         android:textColor="#A60E0E"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="parent" />
@@ -274,8 +275,8 @@
 
                         <ImageButton
                             android:id="@+id/phoneno2"
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:layout_marginStart="10dp"
 
                             android:layout_marginTop="1dp"
@@ -287,8 +288,8 @@
 
                         <ImageButton
                             android:id="@+id/whatsapp2"
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:layout_marginStart="10dp"
 
                             android:layout_marginTop="1dp"

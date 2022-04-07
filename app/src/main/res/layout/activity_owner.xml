@@ -30,12 +30,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvownerproperties"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="529dp"
-
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/horizontallayoutbg"
         android:orientation="horizontal"
-        android:paddingTop="21dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
