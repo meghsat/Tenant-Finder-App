@@ -16,6 +16,8 @@
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".AddNewPropertyActivity"></activity>
 
+        <activity android:name=".UserprofileActivity"></activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

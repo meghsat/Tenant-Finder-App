@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -21,6 +24,8 @@ public class TenantActivity extends AppCompatActivity {
     TextView viewall;
     List<List<String>> propertiesdata;
     RecyclerView rvContacts;
+    ImageView userprofile;
+    TextView welcomeuser;
     void method2(List<List<String>> lists)
     {
         TenantpropertieshomeActivity adapterobj=new TenantpropertieshomeActivity(lists,"tenant");
@@ -40,7 +45,17 @@ public class TenantActivity extends AppCompatActivity {
 
         rvContacts = (RecyclerView) findViewById(R.id.rvtenantproperties);
         viewall =(TextView) findViewById(R.id.viewall);
-
+        welcomeuser=(TextView) findViewById(R.id.welcomeuser);
+userprofile=(ImageView) findViewById(R.id.userprofile);
+        Intent tenantintent = getIntent();
+        String usernamee = tenantintent.getStringExtra("username");
+        userprofile.setOnClickListener((view2)->{
+            System.out.println("boo");
+                    Intent userprofileintent=new Intent(TenantActivity.this,UserprofileActivity.class);
+                    userprofileintent.putExtra("username",usernamee);
+                    startActivity(userprofileintent);
+                });
+        welcomeuser.setText("Welcome "+usernamee);
         city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

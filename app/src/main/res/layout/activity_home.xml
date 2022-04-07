@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/buttontenant"
-        android:layout_width="422dp"
-        android:layout_height="363dp"
+        android:layout_width="389dp"
+        android:layout_height="354dp"
         android:backgroundTint="#FFC107"
         android:shadowColor="#E1D6D6"
         android:text="Looking For A House?, Find Here"
@@ -22,8 +22,8 @@
 
     <Button
         android:id="@+id/buttonowner"
-        android:layout_width="405dp"
-        android:layout_height="372dp"
+        android:layout_width="389dp"
+        android:layout_height="367dp"
         android:layout_marginStart="4dp"
         android:layout_marginBottom="3dp"
         android:background="#2AAF89"

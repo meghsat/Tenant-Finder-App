@@ -53,6 +53,7 @@ public class  MainActivity extends AppCompatActivity {
                        {
                            //System.out.println("boo");
                            Intent homeintent=new Intent(MainActivity.this,HomeActivity.class);
+                           homeintent.putExtra("username",username2);
                            startActivity(homeintent);
                        }
                        else

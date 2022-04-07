@@ -22,7 +22,9 @@ public class HomeActivity extends AppCompatActivity {
 
         buttontenant.setOnClickListener((view) ->
         {
+            Intent homeintent = getIntent();
             Intent tenantintent=new Intent(HomeActivity.this,TenantActivity.class);
+            tenantintent.putExtra("username",homeintent.getStringExtra("username"));
             startActivity(tenantintent);
         });
 
