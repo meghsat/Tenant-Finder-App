@@ -1,8 +1,8 @@
 package com.example.tenantfinder_new;
 
 public class UserDataRegister {
-  public  String emailid2,username2,confirmpassword2,password2,firstname2,lastname2;
-    UserDataRegister(String emailid2,String username2,String confirmpassword2,String password2,String firstname2,String lastname2)
+  public  String emailid2,username2,confirmpassword2,password2,firstname2,lastname2,phonenumber2;
+    UserDataRegister(String emailid2,String username2,String confirmpassword2,String password2,String firstname2,String lastname2,String phonenumber2)
     {
         this.emailid2=emailid2;
         this.username2=username2;
@@ -10,6 +10,7 @@ public class UserDataRegister {
         this.password2=password2;
         this.firstname2=firstname2;
         this.lastname2=lastname2;
+        this.phonenumber2=phonenumber2;
 
     }
 

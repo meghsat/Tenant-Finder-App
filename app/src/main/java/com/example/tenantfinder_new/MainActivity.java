@@ -36,7 +36,7 @@ public class  MainActivity extends AppCompatActivity {
         login=(Button) findViewById(R.id.login);
         newuser=(TextView) findViewById(R.id.newuser);
         username=(EditText) findViewById(R.id.username);
-        password=(EditText) findViewById(R.id.password);
+        password=(EditText) findViewById(R.id.phonenumber);
 
         login.setOnClickListener((view) ->{
             String username2=username.getText().toString().trim();

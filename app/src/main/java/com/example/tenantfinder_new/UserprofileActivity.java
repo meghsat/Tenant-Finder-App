@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class UserprofileActivity extends AppCompatActivity {
-    EditText username2,firstname2,lastname2,emailid2,password2;
+    EditText username2,firstname2,lastname2,emailid2,password2,phonenumber2;
     TextView welcomeuser2;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -33,13 +33,14 @@ public class UserprofileActivity extends AppCompatActivity {
         lastname2=(EditText) findViewById(R.id.lastname2);
         emailid2=(EditText) findViewById(R.id.emailid2);
         password2=(EditText) findViewById(R.id.password2);
+        phonenumber2=(EditText) findViewById(R.id.phonenumber2);
         rootNode=FirebaseDatabase.getInstance();
         reference=rootNode.getReference().child("users");
 welcomeuser2=(TextView) findViewById(R.id.welcomeuser2);
 welcomeuser2.setText("Welcome "+usernamee);
 submitchanges=(Button) findViewById(R.id.submitchanges);
 submitchanges.setOnClickListener((view)->{
-    UserDataRegister userdata=new UserDataRegister(emailid2.getText().toString(),username2.getText().toString(),password2.getText().toString(),password2.getText().toString(),firstname2.getText().toString(),lastname2.getText().toString());
+    UserDataRegister userdata=new UserDataRegister(emailid2.getText().toString(),username2.getText().toString(),password2.getText().toString(),password2.getText().toString(),firstname2.getText().toString(),lastname2.getText().toString(),phonenumber2.getText().toString().trim());
     reference.child(usernamee).setValue(userdata,new DatabaseReference.CompletionListener() {
         @Override
         public void onComplete(DatabaseError error, DatabaseReference ref) {
@@ -63,6 +64,7 @@ submitchanges.setOnClickListener((view)->{
                     lastname2.setText(snapshot.child(usernamee).child("lastname2").getValue(String.class));
                     emailid2.setText(snapshot.child(usernamee).child("emailid2").getValue(String.class));
                     password2.setText(snapshot.child(usernamee).child("password2").getValue(String.class));
+                    phonenumber2.setText(snapshot.child(usernamee).child("phonenumber2").getValue(String.class));
                 }
 
             }
