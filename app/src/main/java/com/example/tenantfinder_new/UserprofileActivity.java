@@ -39,6 +39,7 @@ public class UserprofileActivity extends AppCompatActivity {
 welcomeuser2=(TextView) findViewById(R.id.welcomeuser2);
 welcomeuser2.setText("Welcome "+usernamee);
 submitchanges=(Button) findViewById(R.id.submitchanges);
+
 submitchanges.setOnClickListener((view)->{
     UserDataRegister userdata=new UserDataRegister(emailid2.getText().toString(),username2.getText().toString(),password2.getText().toString(),password2.getText().toString(),firstname2.getText().toString(),lastname2.getText().toString(),phonenumber2.getText().toString().trim());
     reference.child(usernamee).setValue(userdata,new DatabaseReference.CompletionListener() {

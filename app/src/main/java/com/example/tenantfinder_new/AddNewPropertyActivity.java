@@ -1,6 +1,7 @@
 package com.example.tenantfinder_new;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,22 +13,36 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tenantfinder_new.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class AddNewPropertyActivity extends AppCompatActivity{
+    ActivityMainBinding binding;
     Spinner city,locality,furnishing;
-    Button submit;
+    Button submit,uploadimages;
     EditText propertyname,address,rent,bhk,sqft;
     String propertyname2,address2,city2,locality2,furnished2,type;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    StorageReference storageReference;
     LinearLayout appartment,commercialcomplex,independenthouse;
     int rent2,bhk2,sqft2;
+    String usernamee;
+    Uri imageUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +54,18 @@ public class AddNewPropertyActivity extends AppCompatActivity{
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         city.setAdapter(adapter2);
         locality = (Spinner) findViewById(R.id.locality);
+uploadimages=(Button) findViewById(R.id.uploadimages);
+        Intent homeintent = getIntent();
+         usernamee = homeintent.getStringExtra("username");
+uploadimages.setOnClickListener(new View.OnClickListener(){
+    @Override
+    public void onClick(View v)
+    {
+        selectImage();
+    }
 
+
+});
 
         city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -138,10 +164,42 @@ sqft=(EditText) findViewById(R.id.sqft);
             furnished2=furnishing.getSelectedItem().toString();
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("properties");
+            uploadImage();
+
             GetProperties propertydata = new GetProperties(propertyname2, address2, rent2, bhk2,sqft2,city2,locality2,furnished2,type);
             // System.out.println(userdata);
             // System.out.println(reference);
-            reference.child(city2).child(locality2).child("venkat").child(propertyname2).setValue(propertydata);
+
+            reference.child(city2).child(locality2).child(usernamee).child(propertyname2).setValue(propertydata);
         });
+    }
+    private void uploadImage(){
+        String filename=propertyname2;
+        storageReference = FirebaseStorage.getInstance().getReference("images/"+city+"/"+locality+"/"+filename);
+        storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+    }
+    private void selectImage() {
+    Intent intent=new Intent();
+    intent.setType("image/*");
+    intent.setAction(Intent.ACTION_GET_CONTENT);
+    startActivityForResult(intent,100);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode==100&& data!=null&&data.getData()!=null)
+        {
+            imageUri=data.getData();
+        }
     }
 }

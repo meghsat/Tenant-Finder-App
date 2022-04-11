@@ -12,7 +12,7 @@
         android:id="@+id/sqft"
         android:layout_width="181dp"
         android:layout_height="53dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="19dp"
         android:ems="10"
         android:hint="Sqft"
@@ -38,7 +38,7 @@
         android:layout_width="181dp"
         android:layout_height="53dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="Property Name"
         android:inputType="textPersonName"
@@ -47,10 +47,10 @@
 
     <EditText
         android:id="@+id/address"
-        android:layout_width="382dp"
+        android:layout_width="362dp"
         android:layout_height="80dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="4dp"
         android:ems="10"
         android:hint="Address"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/uploadimages" />
 
     <Button
         android:id="@+id/submit"
@@ -66,13 +66,15 @@
         android:layout_height="66dp"
 
 
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#36438F"
         android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintHorizontal_bias="0.995"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address" />
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        app:layout_constraintVertical_bias="0.099" />
 
     <Spinner
         android:id="@+id/locality"
@@ -124,7 +126,7 @@
         android:id="@+id/furnishing"
         android:layout_width="179dp"
         android:layout_height="54dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +136,7 @@
         android:id="@+id/rent"
         android:layout_width="181dp"
         android:layout_height="53dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="29dp"
         android:ems="10"
@@ -252,11 +254,11 @@
     </HorizontalScrollView>
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="157dp"
+        android:id="@+id/uploadimages"
+        android:layout_width="179dp"
         android:layout_height="57dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
         android:text="Upload Images"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/furnishing" />
@@ -265,7 +267,7 @@
         android:id="@+id/bhk"
         android:layout_width="181dp"
         android:layout_height="53dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="19dp"
         android:ems="10"
         android:hint="BHK"

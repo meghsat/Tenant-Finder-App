@@ -25,14 +25,21 @@ void method2(List<List<String>> lists)
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner);
         addnewproperty=(Button) findViewById(R.id.addnewproperty);
+        Intent homeintent = getIntent();
+        String usernamee = homeintent.getStringExtra("username");
 
         addnewproperty.setOnClickListener((view)->
         {
+
             Intent addproperty=new Intent(OwnerActivity.this,AddNewPropertyActivity.class);
+            addproperty.putExtra("username",usernamee);
+
             startActivity(addproperty);
         });
          rvContacts = (RecyclerView) findViewById(R.id.rvownerproperties);
-        PropertiesDataActivity.ownerside("venkat", new Returnpropertiesdata() {
+        System.out.println("---------");
+
+        PropertiesDataActivity.ownerside(usernamee, new Returnpropertiesdata() {
             @Override
             public  void onSuccess(List<List<String>> lists2){
                 propertiesdata=lists2;

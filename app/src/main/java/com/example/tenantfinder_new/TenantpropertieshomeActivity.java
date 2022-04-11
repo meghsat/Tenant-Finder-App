@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,10 +30,19 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
 public class TenantpropertieshomeActivity extends  RecyclerView.Adapter<TenantpropertieshomeActivity.ViewHolderchinnu> {
 
     List<List<String>> propertiesdata;
     String side;
+    FirebaseDatabase database;
+    static FirebaseStorage storage;
+
     int listmainsizetracker;
     public class ViewHolderchinnu extends RecyclerView.ViewHolder{
         public ImageView building1;
@@ -110,8 +120,16 @@ public class TenantpropertieshomeActivity extends  RecyclerView.Adapter<Tenantpr
             if (propertiesdatasub.size() > 0) {
                 // Set item views based on your views and data model
                 (viewHolderobject.rent1).setText(propertiesdatasub.get(0));
-
-                viewHolderobject.building1.setImageResource(R.mipmap.download);
+                System.out.println(propertiesdatasub.get(4));
+                 StorageReference ref= storage.getInstance().getReference().child(propertiesdatasub.get(4));
+            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    System.out.println(uri);
+                    Picasso.get().load(uri).into(viewHolderobject.building1);
+                }
+            });
+                //viewHolderobject.building1.setImageResource(propertiesdatasub.get(4));
 
 
                 viewHolderobject.description1.setText(propertiesdatasub.get(1));
