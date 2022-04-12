@@ -7,5 +7,10 @@
     <stroke
         android:width="3dip"
         android:color="@android:color/holo_orange_light" />
+    <gradient
+        android:angle="45"
 
+        android:endColor="#dbd5d5"
+        android:startColor="#cbeaf7"
+        android:type="linear" />
 </shape>

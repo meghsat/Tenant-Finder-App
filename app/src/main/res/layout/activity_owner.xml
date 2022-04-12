@@ -3,47 +3,76 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/eleven"
+    >
 
     <Button
         android:id="@+id/addnewproperty"
-        android:layout_width="172dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="108dp"
+        android:layout_width="190dp"
+        android:layout_height="73dp"
         android:layout_marginTop="8dp"
         android:text="Add A Property"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/userprofile"
+        android:layout_width="58dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:clickable="true"
+        android:src="@mipmap/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="289dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="68dp"
+        android:id="@+id/welcomeuser"
+        android:layout_width="247dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
-        android:text="Your Listed Properties"
+        android:layout_marginEnd="24dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/userprofile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvownerproperties"
-        android:layout_width="match_parent"
-        android:layout_height="529dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="333dp"
+        android:layout_height="483dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="15dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/horizontallayoutbg"
-        android:orientation="horizontal"
+        android:background="@drawable/horizontallayoutbg2"
 
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addnewproperty"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.622" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="196dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Your Properties"
+        android:textColor="#0E0606"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.695"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeuser" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

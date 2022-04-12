@@ -12,12 +12,14 @@
         android:id="@+id/sqft"
         android:layout_width="181dp"
         android:layout_height="53dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="19dp"
         android:ems="10"
         android:hint="Sqft"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/uploadimages"
         app:layout_constraintTop_toBottomOf="@+id/bhk" />
 
     <TextView
@@ -127,8 +129,6 @@
         android:layout_width="179dp"
         android:layout_height="54dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/propertyname" />
 
@@ -154,7 +154,8 @@
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locality">
+        app:layout_constraintTop_toBottomOf="@+id/locality"
+        android:background="@drawable/linearlayoutbg">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -255,11 +256,13 @@
 
     <Button
         android:id="@+id/uploadimages"
-        android:layout_width="179dp"
+        android:layout_width="170dp"
         android:layout_height="57dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="7dp"
         android:text="Upload Images"
+        app:layout_constraintEnd_toStartOf="@+id/sqft"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/furnishing" />
 
@@ -267,11 +270,13 @@
         android:id="@+id/bhk"
         android:layout_width="181dp"
         android:layout_height="53dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="19dp"
         android:ems="10"
         android:hint="BHK"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/furnishing"
         app:layout_constraintTop_toBottomOf="@+id/rent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

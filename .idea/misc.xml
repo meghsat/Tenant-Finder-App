@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/drawable/horizontallayoutbg.xml" value="0.196" />
+        <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/drawable/horizontallayoutbg2.xml" value="0.279" />
+        <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/drawable/horizontallayoutbg3.xml" value="0.279" />
+        <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/drawable/linearlayoutbg.xml" value="0.196" />
         <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/layout/activity_addnewproperty.xml" value="0.23114035087719298" />
         <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/layout/activity_home.xml" value="0.22509057971014493" />
         <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/layout/activity_owner.xml" value="0.1671195652173913" />
+        <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/layout/activity_owner.xml" value="0.2" />
         <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/layout/activity_ownerinsiderecycler.xml" value="0.1" />
         <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/layout/activity_recycler.xml" value="0.20697463768115942" />
         <entry key="..\:/Apps/tenant-finder-main/app/src/main/res/layout/activity_register.xml" value="0.18802083333333333" />
