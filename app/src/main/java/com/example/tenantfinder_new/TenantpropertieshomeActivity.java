@@ -136,10 +136,13 @@ edit=(ImageButton) tenantview.findViewById(R.id.edit);
                     String rent = (rentfularr[1]);
                     String[] descriptionfularr = ("" + viewHolderobject.description1.getText()).split(",");
                     String furnished = descriptionfularr[0];
-//System.out.println(furnished);
+System.out.println(furnished);
+System.out.println((descriptionfularr[1]));
+
                     String bhk = ((descriptionfularr[1]).split(" ")[1]);
-                    String type = ((descriptionfularr[1]).split(" ")[3]) + " " + ((descriptionfularr[1]).split(" ")[4]);
-                    // System.out.println(type);
+                    String type = ((descriptionfularr[1]).split(" ")[3]);
+                     System.out.println(bhk);
+                     System.out.println();
 
                     String sqft = ((descriptionfularr[2]).split(" ")[1]);
                     String propertyname = (("" + viewHolderobject.owner1.getText()).split(":"))[1];
