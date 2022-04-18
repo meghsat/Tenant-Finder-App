@@ -30,7 +30,9 @@ import org.w3c.dom.Text;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseError;
@@ -153,20 +155,32 @@ System.out.println((descriptionfularr[1]));
 //System.out.println("boo"+(descriptionfularr[1]).split(" ")[1]);
                     PropertyDataUpdate userdata = new PropertyDataUpdate(address, bhk, "Bangalore", furnished, "HSRLayout", propertyname, rent, sqft, type);
                     System.out.println(userdata);
+                    Map<String, Object> updates = new HashMap<String,Object>();
+updates.put("address",address);
+                    updates.put("bhk",bhk);
+                    updates.put("city","Bangalore");
+                    updates.put("furnished",furnished);
+                    updates.put("locality","HSRLayout");
+                    updates.put("propertyname",propertyname);
+                    updates.put("rent",rent);
+                    updates.put("sqft",sqft);
+                    updates.put("type",type);
+
                     rootNode = FirebaseDatabase.getInstance();
 
                     reference = rootNode.getReference().child("properties");
 
-                    reference.child("Bangalore/HSRLayout/" + propertiesdatasub.get(5) + "/"+propertyname).setValue(userdata, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(DatabaseError error, DatabaseReference ref) {
-                            System.err.println("Value was set. Error = " + error);
-//                    if(error==null)
-//                    {
-//                        Toast.makeText(UserprofileActivity.this, "Profile Update Successful",Toast.LENGTH_SHORT).show();
-//                    }
-                        }
-                    });
+                    reference.child("Bangalore/HSRLayout/" + propertiesdatasub.get(5) + "/"+propertyname).updateChildren(updates);
+//                            , new DatabaseReference.CompletionListener() {
+//                        @Override
+//                        public void onComplete(DatabaseError error, DatabaseReference ref) {
+//                            System.err.println("Value was set. Error = " + error);
+////                    if(error==null)
+////                    {
+////                        Toast.makeText(UserprofileActivity.this, "Profile Update Successful",Toast.LENGTH_SHORT).show();
+////                    }
+//                        }
+//                    });
                 });
             }
 
