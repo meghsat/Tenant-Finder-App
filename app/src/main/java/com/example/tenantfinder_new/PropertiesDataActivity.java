@@ -36,11 +36,11 @@ static FirebaseStorage storage;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     for(DataSnapshot snapshotproperties:snapshot.getChildren()) {
                         ArrayList<String> list = new ArrayList<>();
-                        list.add("Rs " + (snapshotproperties.child("rent").getValue(Long.class)).toString() + " / Month");
-                        list.add(snapshotproperties.child("furnished").getValue(String.class) + ", " + (snapshotproperties.child("bhk").getValue(Long.class)).toString() + " BHK " + snapshotproperties.child("type").getValue(String.class) + ", " + (snapshotproperties.child("sqft").getValue(Long.class)).toString() + " sqft.");
+                        list.add("Rs " + (snapshotproperties.child("rent").getValue(String.class)).toString() + " / Month");
+                        list.add(snapshotproperties.child("furnished").getValue(String.class) + ", " + (snapshotproperties.child("bhk").getValue(String.class)).toString() + " BHK " + snapshotproperties.child("type").getValue(String.class) + ", " + (snapshotproperties.child("sqft").getValue(String.class)).toString() + " sqft.");
                         list.add(snapshotproperties.child("address").getValue(String.class));
                         list.add("Property Name: " + snapshotproperties.child("propertyname").getValue(String.class));
-                        list.add("images/"+city+"/"+locality.replaceAll(" ","")+"/"+snapshotproperties.child("propertyname").getValue(String.class)+".jfif");
+                        list.add("images/"+city+"/"+locality.replaceAll(" ","")+"/"+snapshotproperties.child("propertyname").getValue(String.class));
                         lists.add(list);
 
                     }
@@ -122,7 +122,7 @@ public static void ownerside(String owner,final Returnpropertiesdata listener){
     rootNode=FirebaseDatabase.getInstance();
     reference=rootNode.getReference().child("properties");
     rootNode=FirebaseDatabase.getInstance();
-    reference=rootNode.getReference().child("properties").child("Bangalore").child("HSR Layout").child(owner);
+    reference=rootNode.getReference().child("properties").child("Bangalore").child("HSRLayout").child(owner);
     System.out.println("--------------------------------");
     List<List<String>> lists = new ArrayList<>();
     reference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -130,12 +130,17 @@ public static void ownerside(String owner,final Returnpropertiesdata listener){
         public void onDataChange(DataSnapshot dataSnapshot) {
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                 ArrayList<String> list=new ArrayList<>();
-                list.add("Rs "+(snapshot.child("rent").getValue(Long.class)).toString()+" / Month");
-                list.add(snapshot.child("furnished").getValue(String.class)+", "+(snapshot.child("bhk").getValue(Long.class)).toString()+" BHK "+snapshot.child("type").getValue(String.class)+", "+(snapshot.child("sqft").getValue(Long.class)).toString()+" sqft.");
+                list.add("Rs "+(snapshot.child("rent").getValue(String.class)).toString()+" / Month");
+                list.add(snapshot.child("furnished").getValue(String.class)+", "+(snapshot.child("bhk").getValue(String.class)).toString()+" BHK "+snapshot.child("type").getValue(String.class)+", "+(snapshot.child("sqft").getValue(String.class)).toString()+" sqft.");
                 list.add(snapshot.child("address").getValue(String.class));
                 list.add("Property Name: "+snapshot.child("propertyname").getValue(String.class));
-                list.add("images/Bangalore/HSRLayout/"+snapshot.child("propertyname").getValue(String.class)+".jfif");
-           // StorageReference ref= storage.getInstance().getReference().child("images/Bangalore/HSRLayout/"+snapshot.child("propertyname").getValue(String.class)+".jfif");
+                list.add("images/Bangalore/HSRLayout/"+snapshot.child("propertyname").getValue(String.class));
+                list.add(owner);
+//                list.add((snapshot.child("rent").getValue(Long.class)).toString());
+//                list.add((snapshot.child("sqft").getValue(Long.class)).toString());
+//                list.add((snapshot.child("type").getValue(String.class)).toString());
+//                list.add(snapshot.child("propertyname").getValue(String.class));
+           // StorageReference ref= storage.getInstance().getReference().child("images/Bangalore/HSRLayout/"+snapshot.child("propertyname").getValue(String.class));
 //            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 //                @Override
 //                public void onSuccess(Uri uri) {

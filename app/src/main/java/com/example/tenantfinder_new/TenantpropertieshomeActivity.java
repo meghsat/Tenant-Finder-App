@@ -14,12 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -42,12 +46,19 @@ public class TenantpropertieshomeActivity extends  RecyclerView.Adapter<Tenantpr
     String side;
     FirebaseDatabase database;
     static FirebaseStorage storage;
-
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
     int listmainsizetracker;
+    public ImageView building1;
+    public TextView rent1,description1,address1,owner1;
+    TextView viewall;
+    ImageButton edit;
     public class ViewHolderchinnu extends RecyclerView.ViewHolder{
         public ImageView building1;
-        public TextView rent1,description1,address1,owner1;
+        public EditText rent1,description1,address1,owner1;
+
         TextView viewall;
+        ImageButton edit;
 
         public ViewHolderchinnu(View tenantview)
         {
@@ -56,13 +67,13 @@ public class TenantpropertieshomeActivity extends  RecyclerView.Adapter<Tenantpr
             // class to have a default constructor when there is a parametized constructor but for some libraries like Recyclerview.viewholder they made it mandatory because if its not mandatory u wont be asked for a super keyword without which u cant handle null exception.
 
             building1=(ImageView) tenantview.findViewById(R.id.building1);
-            rent1=(TextView) tenantview.findViewById(R.id.rent1);
-            description1=(TextView) tenantview.findViewById(R.id.description1);
-            address1=(TextView) tenantview.findViewById(R.id.address1);
-            owner1=(TextView) tenantview.findViewById(R.id.owner1);
+            rent1=(EditText) tenantview.findViewById(R.id.rent1);
+            description1=(EditText) tenantview.findViewById(R.id.description1);
+            address1=(EditText) tenantview.findViewById(R.id.address1);
+            owner1=(EditText) tenantview.findViewById(R.id.owner1);
 
             viewall =(TextView) tenantview.findViewById(R.id.viewall);
-
+edit=(ImageButton) tenantview.findViewById(R.id.edit);
         }
 
     }
@@ -85,11 +96,7 @@ public class TenantpropertieshomeActivity extends  RecyclerView.Adapter<Tenantpr
         if(side.equals("owner")) {
            tenantview = inflater.inflate(R.layout.activity_ownerinsiderecycler, parent, false);
         }
-        else if(side.equals("tenantall"))
-        {
-            tenantview = inflater.inflate(R.layout.activity_tenantproperties, parent, false);
 
-        }
         else{
             tenantview = inflater.inflate(R.layout.activity_tenant, parent, false);
 
@@ -101,27 +108,12 @@ public class TenantpropertieshomeActivity extends  RecyclerView.Adapter<Tenantpr
     @Override
     public void onBindViewHolder(TenantpropertieshomeActivity.ViewHolderchinnu viewHolderobject, int position) {
 
-        // Get the data model based on position
-
-//        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(holder.mContext,
-//                R.array.planets_array, android.R.layout.simple_spinner_item);
-//        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        holder.spinner.setAdapter(adapter2);
-//        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(holder.mContext,
-//                R.array.planets_array, android.R.layout.simple_spinner_item);
-//        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        holder.spinner2.setAdapter(adapter3);
-//        holder.viewall.setOnClickListener((view)->{
-//                    Intent viewallintent=new Intent(TenantpropertieshomeActivity.this,TenantpropertiesMainActivity.class);
-//                    startActivity(viewallintent);
-//                }
-//        );
             List<String> propertiesdatasub = propertiesdata.get(position);
             if (propertiesdatasub.size() > 0) {
                 // Set item views based on your views and data model
                 (viewHolderobject.rent1).setText(propertiesdatasub.get(0));
-                System.out.println(propertiesdatasub.get(4));
-                 StorageReference ref= storage.getInstance().getReference().child(propertiesdatasub.get(4));
+                System.out.println("---"+propertiesdatasub.get(4));
+                 StorageReference ref= storage.getInstance().getReference().child((propertiesdatasub.get(4)));
             ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
@@ -136,6 +128,43 @@ public class TenantpropertieshomeActivity extends  RecyclerView.Adapter<Tenantpr
                 viewHolderobject.address1.setText(propertiesdatasub.get(2));
 
                 viewHolderobject.owner1.setText(propertiesdatasub.get(3));
+            }
+            if(side.equals("owner")) {
+                viewHolderobject.edit.setOnClickListener((view) -> {
+                    String rentful = "" + viewHolderobject.rent1.getText();
+                    String[] rentfularr = rentful.split(" ");
+                    String rent = (rentfularr[1]);
+                    String[] descriptionfularr = ("" + viewHolderobject.description1.getText()).split(",");
+                    String furnished = descriptionfularr[0];
+//System.out.println(furnished);
+                    String bhk = ((descriptionfularr[1]).split(" ")[1]);
+                    String type = ((descriptionfularr[1]).split(" ")[3]) + " " + ((descriptionfularr[1]).split(" ")[4]);
+                    // System.out.println(type);
+
+                    String sqft = ((descriptionfularr[2]).split(" ")[1]);
+                    String propertyname = (("" + viewHolderobject.owner1.getText()).split(":"))[1];
+                    String address = ("" + viewHolderobject.address1.getText());
+                    //  System.out.println(propertyname);
+                    //System.out.println(address+" "+sqft);
+
+//System.out.println("boo"+(descriptionfularr[1]).split(" ")[1]);
+                    PropertyDataUpdate userdata = new PropertyDataUpdate(address, bhk, "Bangalore", furnished, "HSR Layout", propertyname, rent, sqft, type);
+                    System.out.println(userdata);
+                    rootNode = FirebaseDatabase.getInstance();
+
+                    reference = rootNode.getReference().child("properties");
+
+                    reference.child("Bangalore/HSR Layout/" + propertiesdatasub.get(5) + "/satya's house").setValue(userdata, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError error, DatabaseReference ref) {
+                            System.err.println("Value was set. Error = " + error);
+//                    if(error==null)
+//                    {
+//                        Toast.makeText(UserprofileActivity.this, "Profile Update Successful",Toast.LENGTH_SHORT).show();
+//                    }
+                        }
+                    });
+                });
             }
 
 

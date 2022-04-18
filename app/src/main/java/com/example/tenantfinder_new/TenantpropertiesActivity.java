@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
 
 import java.sql.Array;
@@ -30,157 +38,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TenantpropertiesActivity extends  RecyclerView.Adapter<TenantpropertiesActivity.ViewHolder> {
-//    Spinner spinner, spinner2;
-//    TextView viewall;
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_tenantproperties);
-       // ScrollView scrollView = view.findViewById(R.id.scrollView);
-//        List<List<String>> lists = new ArrayList<>();
-//        ArrayList<String> list=new ArrayList<String>();
-//        list.add("Rs 1,00,000 / Month");
-//        list.add("Semi Furnished, 1BHK Flat, 1200 sqft.");
-//        list.add("Flat no:402, 4th Floor, 5th X roads, infront of Forum Mall, HSR Layout, Bengaluru.");
-//        list.add("Owner: Mr. Venkatraya");
-//
-//        lists.add(list);
-//        ArrayList<String> list2=new ArrayList<String>();
-//        list2.add("Rs 15,000 / Month");
-//        list2.add("Fully Furnished, 3BHK Flat, 2500 sqft.");
-//        list2.add("Flat no:500, 5th Floor, RTX cross roads, infront of My friend house, Madhapur, Hyderabad.");
-//        list2.add("Owner: Mr. Satya Sai");
-//
-//        lists.add(list2);
-//        ArrayList<String> list3=new ArrayList<String>();
-//        list2.add("Rs 1,20,000 / Month");
-//        list2.add("Fully Furnished, 6BHK Duplex, 3000 sqft.");
-//        list2.add("Door no:76/15/34, Main Road currency naga, infront of lalita jewllers, Nallamalla forest, AP.");
-//        list2.add("Owner: Mr. happy");
-//
-//        lists.add(list3);
-//        System.out.println(lists.size());
-//        LinearLayout linearlayoutmain=(LinearLayout) findViewById(R.id.LinearLayoutmain);
-//        int i=0;
-//        for( List<String> listt: lists)
-//{
-//System.out.println(listt);
-//if(listt.size()>0) {
-
-//    ImageView building1=(ImageView) findViewById(R.id.building1);
-//    building1.setImageResource(R.mipmap.download);
-//    TextView rent1=(TextView) findViewById(R.id.rent1);
-//    rent1.setText(listt.get(0));
-//    TextView description1=(TextView) findViewById(R.id.description1);
-//    description1.setText(listt.get(1));
-//    TextView address1=(TextView) findViewById(R.id.address1);
-//    address1.setText(listt.get(2));
-//    TextView owner1=(TextView) findViewById(R.id.owner1);
-//    owner1.setText(listt.get(3));
-
-//    LinearLayout linearLayout = new LinearLayout(this);
-//    linearLayout.setLayoutParams(new LinearLayout.LayoutParams(380*((int) linearLayout.getResources().getDisplayMetrics().density), 600*((int) linearLayout.getResources().getDisplayMetrics().density)));
-//
-//    linearLayout.setOrientation(LinearLayout.VERTICAL);
-//
-//
-//    ImageView imageview=new ImageView(this);
-//    imageview.setImageResource(R.mipmap.download);
-//    imageview.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-//    ViewGroup.MarginLayoutParams marginparams=new ViewGroup.MarginLayoutParams(imageview.getLayoutParams());
-//    marginparams.setMargins(60*((int) linearLayout.getResources().getDisplayMetrics().density),10*((int) linearLayout.getResources().getDisplayMetrics().density),10*((int) linearLayout.getResources().getDisplayMetrics().density),0*((int) linearLayout.getResources().getDisplayMetrics().density));
-//    RelativeLayout.LayoutParams layoutparameter2=new RelativeLayout.LayoutParams(marginparams);
-//    imageview.setLayoutParams(layoutparameter2);
-//linearLayout.addView(imageview);
-//
-//    TextView rent1=new TextView(this);
-//    rent1.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-//    rent1.setText(listt.get(0));
-//    rent1.setTextSize(10);
-//    rent1.setTextColor(Color.parseColor("#730B0B"));
-//    rent1.setLayoutParams(layoutparameter2);
-//linearLayout.addView(rent1);
-//
-//
-//    TextView description1=new TextView(this);
-//    description1.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-//    description1.setText(listt.get(1));
-//    description1.setTextSize(8);
-//    description1.setTypeface(null,Typeface.BOLD);
-//
-//    description1.setTextColor(Color.parseColor("#0C0101"));
-//    description1.setLayoutParams(layoutparameter2);
-//    linearLayout.addView(description1);
-//
-//
-//    TextView address1=new TextView(this);
-//    address1.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-//    address1.setText(listt.get(2));
-//    address1.setTextSize(10);
-//    address1.setTextColor(Color.parseColor("#120505"));
-//    address1.setLayoutParams(layoutparameter2);
-//    linearLayout.addView(address1);
-//
-//    LinearLayout linearLayoutsub = new LinearLayout(this);
-//    linearLayoutsub.setLayoutParams(layoutparameter2);
-//    linearLayoutsub.setBackgroundResource(R.drawable.linearlayoutbg);
-//
-//    linearLayoutsub.setOrientation(LinearLayout.HORIZONTAL);
-//
-//    TextView owner1=new TextView(this);
-//    owner1.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-//    owner1.setText("Owner Mr. Venkatraya");
-//    owner1.setTextSize(8);
-//    owner1.setTextColor(Color.parseColor("#120505"));
-//    owner1.setTypeface(null,Typeface.BOLD);
-//    //owner1.setLayoutParams(layoutparameter2);
-//
-//    linearLayoutsub.addView(owner1);
-//
-//    LinearLayout linearLayoutsub2 = new LinearLayout(this);
-//    linearLayoutsub2.setLayoutParams(new LinearLayout.LayoutParams(800*((int) linearLayout.getResources().getDisplayMetrics().density), 480*((int) linearLayout.getResources().getDisplayMetrics().density)));
-//    linearLayoutsub2.setOrientation(LinearLayout.VERTICAL);
-//
-//    TextView Reachat=new TextView(this);
-//    Reachat.setLayoutParams(new ViewGroup.LayoutParams(88*((int) linearLayout.getResources().getDisplayMetrics().density), LinearLayout.LayoutParams.WRAP_CONTENT));
-//    Reachat.setText("Reach At:");
-//    Reachat.setTextSize(8);
-//    Reachat.setTextColor(Color.parseColor("#A60E0E"));
-//    Reachat.setTypeface(null,Typeface.BOLD);
-//  //  Reachat.setLayoutParams(layoutparameter2);
-//
-//    linearLayoutsub2.addView(Reachat);
-//
-//    LinearLayout linearLayoutsub3 = new LinearLayout(this);
-//    linearLayoutsub3.setLayoutParams(new LinearLayout.LayoutParams(400*((int) linearLayout.getResources().getDisplayMetrics().density), 50*((int) linearLayout.getResources().getDisplayMetrics().density)));
-//    linearLayoutsub3.setOrientation(LinearLayout.HORIZONTAL);
-//
-//    ImageView phoneno=new ImageView(this);
-//    phoneno.setImageResource(R.mipmap.phone);
-//    phoneno.setLayoutParams(new ViewGroup.LayoutParams(38*((int) linearLayout.getResources().getDisplayMetrics().density),38*((int) linearLayout.getResources().getDisplayMetrics().density)));
-//
-//    linearLayoutsub3.addView(phoneno);
-//
-//    ImageView whatsapp=new ImageView(this);
-//    whatsapp.setImageResource(R.mipmap.whatsapp);
-//    whatsapp.setLayoutParams(new ViewGroup.LayoutParams(38*((int) linearLayout.getResources().getDisplayMetrics().density),38*((int) linearLayout.getResources().getDisplayMetrics().density)));
-//
-//    linearLayoutsub3.addView(whatsapp);
-//
-//    linearLayoutsub2.addView(linearLayoutsub3);
-//   linearLayoutsub.addView(linearLayoutsub2);
-//    linearLayout.addView(linearLayoutsub);
-//    linearlayoutmain.addView(linearLayout);
-//
-//    break;
-//    if(i>0) {
-//        LinearLayout linearlayoutsub = (LinearLayout) findViewById(R.id.LinearLayoutsub);
-//        linearlayoutmain.removeView(linearlayoutsub);
-//    linearlayoutmain.addView(linearlayoutsub);
-//    }
-//    i++;
-//}
+    FirebaseDatabase database;
+    static FirebaseStorage storage;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
     List<List<String>> propertiesdata;
     int listmainsizetracker;
 public class ViewHolder extends RecyclerView.ViewHolder{
@@ -208,6 +69,7 @@ public TextView rent1,description1,address1,owner1,rent2,description2,address2,o
 }
     public TenantpropertiesActivity(List<List<String>> PropertiesDataActivity)
     {
+        System.out.println("---"+PropertiesDataActivity);
         propertiesdata=PropertiesDataActivity;
         listmainsizetracker=propertiesdata.size();
     }
@@ -249,8 +111,15 @@ public TextView rent1,description1,address1,owner1,rent2,description2,address2,o
                 // Set item views based on your views and data model
                 (holder.rent1).setText(propertiesdatasub.get(0));
 
-                holder.building1.setImageResource(R.mipmap.download);
-
+               // holder.building1.setImageResource(R.mipmap.download);
+                StorageReference ref= storage.getInstance().getReference().child((propertiesdatasub.get(4)).replaceAll(" ",""));
+                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        System.out.println(uri);
+                        Picasso.get().load(uri).into(holder.building1);
+                    }
+                });
 
                 holder.description1.setText(propertiesdatasub.get(1));
                 holder.address1.setText(propertiesdatasub.get(2));
@@ -267,7 +136,16 @@ if(listmainsizetracker>0){
                 TextView rent2 = holder.rent2;
                 rent2.setText(propertiesdatasub2.get(0));
                 ImageView building12 = holder.building2;
-                building12.setImageResource(R.mipmap.download2);
+            //    building12.setImageResource(R.mipmap.download2);
+                StorageReference ref= storage.getInstance().getReference().child((propertiesdatasub2.get(4)).replaceAll(" ",""));
+                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        System.out.println(uri);
+                        Picasso.get().load(uri).into(building12);
+                    }
+                });
+
                 TextView rent12 = holder.rent2;
                 rent12.setText(propertiesdatasub2.get(0));
                 TextView description12 = holder.description2;

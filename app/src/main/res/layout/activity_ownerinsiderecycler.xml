@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="375dp"
+            android:layout_height="475dp"
             android:paddingBottom="3dp"
             android:orientation="vertical">
 
@@ -28,7 +28,7 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="20dp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/rent1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <EditText
                 android:id="@+id/description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <EditText
                 android:id="@+id/address1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                 android:background="@drawable/linearlayoutbg"
                 android:orientation="horizontal">
 
-                <TextView
+                <EditText
                     android:id="@+id/owner1"
                     android:layout_width="178dp"
                     android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
 
                     <TextView
                         android:id="@+id/Reachat"
-                        android:layout_width="88dp"
+                        android:layout_width="68dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="40dp"
 
@@ -114,29 +114,40 @@
                     <LinearLayout
                         android:layout_width="100dp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="25dp"
+                        android:layout_marginStart="4dp"
                         android:layout_marginTop="1dp"
 
                         android:orientation="horizontal">
 
+
                         <ImageButton
-                            android:id="@+id/phoneno"
+                            android:id="@+id/edit"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="1dp"
 
                             android:layout_marginTop="1dp"
-                            android:foreground="@mipmap/phone"
+                            android:foreground="@mipmap/edit"
                             android:src="?attr/selectableItemBackground"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="parent"
                             tools:src="@color/common_google_signin_btn_tint" />
+<ImageButton
+    android:id="@+id/phone"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:layout_marginStart="9dp"
+
+    android:layout_marginTop="1dp"
+    android:foreground="@mipmap/phone"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="parent"/>
 
                         <ImageButton
                             android:id="@+id/whatsapp"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="7dp"
 
                             android:layout_marginTop="1dp"
                             android:foreground="@mipmap/whatsapp"

@@ -15,7 +15,7 @@ public class TenantpropertiesMainActivity extends AppCompatActivity {
     RecyclerView rvContacts;
     void method2(List<List<String>> lists)
     {
-        TenantpropertieshomeActivity adapterobj=new TenantpropertieshomeActivity(lists,"tenantall");
+        TenantpropertiesActivity adapterobj=new TenantpropertiesActivity(lists);
         rvContacts.setAdapter(adapterobj);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -30,7 +30,7 @@ public class TenantpropertiesMainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(List<List<String>> lists2) {
                 propertiesdata = lists2;
-                System.out.println(propertiesdata);
+                //System.out.println(propertiesdata);
                 method2(propertiesdata);
             }
 

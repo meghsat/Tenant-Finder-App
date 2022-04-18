@@ -10,43 +10,43 @@
         </string-array>
     <string-array name="Bangalore_array">
         <item>Bellandur</item>
-        <item>HSR Layout</item>
+        <item>HSRLayout</item>
         <item>Kormangala</item>
         <item>Marthalli</item>
         <item>Mahadevpura</item>
-        <item>white Field</item>
+        <item>whiteField</item>
     </string-array>
     <string-array name="Hyderabad_array">
         <item>ECIL</item>
         <item>Madhapur</item>
         <item>Abids</item>
-        <item>Ring Road</item>
+        <item>RingRoad</item>
         <item>Amirpet</item>
-        <item>Banjara Hills</item>
+        <item>BanjaraHills</item>
     </string-array>
     <string-array name="vijayawada_array">
         <item>patamata</item>
-        <item>KSN palem</item>
-        <item>Ashok nagar</item>
-        <item>Auto Nagar</item>
-        <item>Benz Circle</item>
-        <item>NTR Circle</item>
-        <item>One town</item>
-        <item>Two town</item>
+        <item>KSNpalem</item>
+        <item>AshokNagar</item>
+        <item>AutoNagar</item>
+        <item>BenzCircle</item>
+        <item>NTRCircle</item>
+        <item>OneTown</item>
+        <item>TwoTown</item>
     </string-array>
     <string-array name="Guntur_array">
-        <item>Bus Stand Road</item>
-        <item>Spencer Road</item>
+        <item>BusStandRoad</item>
+        <item>SpencerRoad</item>
         <item>Delhi</item>
-        <item>Srinivasarao pet</item>
-        <item>Ashok Nagar</item>
-        <item>Auto Nagar</item>
-        <item>KVP colony</item>
+        <item>SrinivasaraoPet</item>
+        <item>AshokNagar</item>
+        <item>AutoNagar</item>
+        <item>KVPColony</item>
     </string-array>
     <string-array name="furnishing_array">
-        <item>Semi Furnished</item>
-        <item>Fully Furnished</item>
-        <item>Not Furnished</item>
+        <item>SemiFurnished</item>
+        <item>FullyFurnished</item>
+        <item>NotFurnished</item>
     </string-array>
 
 </resources>

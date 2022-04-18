@@ -40,7 +40,7 @@ public class AddNewPropertyActivity extends AppCompatActivity{
     DatabaseReference reference;
     StorageReference storageReference;
     LinearLayout appartment,commercialcomplex,independenthouse;
-    int rent2,bhk2,sqft2;
+    String rent2,bhk2,sqft2;
     String usernamee;
     Uri imageUri;
     @Override
@@ -135,14 +135,14 @@ uploadimages.setOnClickListener(new View.OnClickListener(){
         commercialcomplex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                type="commercial complex";
+                type="CommercialComplex";
             }
         });
 
         independenthouse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                type="Independent House";
+                type="IndependentHouse";
             }
         });
 
@@ -154,14 +154,14 @@ sqft=(EditText) findViewById(R.id.sqft);
         submit=(Button) findViewById(R.id.submit);
         submit.setOnClickListener((view)->
         {
-            propertyname2=propertyname.getText().toString().trim();
-            address2=address.getText().toString().trim();
-            rent2=Integer.parseInt(rent.getText().toString().trim());
-            bhk2=Integer.parseInt(bhk.getText().toString().trim());
-            sqft2=Integer.parseInt(sqft.getText().toString().trim());
+            propertyname2=(propertyname.getText().toString()).replaceAll(" ","");
+            address2=address.getText().toString();
+            rent2=rent.getText().toString();
+            bhk2=(bhk.getText().toString());
+            sqft2=(sqft.getText().toString());
             city2=city.getSelectedItem().toString();
             locality2=locality.getSelectedItem().toString();
-            furnished2=furnishing.getSelectedItem().toString();
+            furnished2=furnishing.getSelectedItem().toString().replaceAll(" ","");
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("properties");
             uploadImage();
@@ -175,7 +175,8 @@ sqft=(EditText) findViewById(R.id.sqft);
     }
     private void uploadImage(){
         String filename=propertyname2;
-        storageReference = FirebaseStorage.getInstance().getReference("images/"+city+"/"+locality+"/"+filename);
+        System.out.println("===="+imageUri);
+        storageReference = FirebaseStorage.getInstance().getReference("images/"+city2+"/"+(locality2).trim()+"/"+(propertyname2).replaceAll(" ",""));
         storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -196,7 +197,7 @@ sqft=(EditText) findViewById(R.id.sqft);
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
-        super.onActivityResult(requestCode,resultCode,data);
+       super.onActivityResult(requestCode,resultCode,data);
         if(requestCode==100&& data!=null&&data.getData()!=null)
         {
             imageUri=data.getData();
