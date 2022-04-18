@@ -151,7 +151,7 @@ System.out.println((descriptionfularr[1]));
                     //System.out.println(address+" "+sqft);
 
 //System.out.println("boo"+(descriptionfularr[1]).split(" ")[1]);
-                    PropertyDataUpdate userdata = new PropertyDataUpdate(address, bhk, "Bangalore", furnished, "HSR Layout", propertyname, rent, sqft, type);
+                    PropertyDataUpdate userdata = new PropertyDataUpdate(address, bhk, "Bangalore", furnished, "HSRLayout", propertyname, rent, sqft, type);
                     System.out.println(userdata);
                     rootNode = FirebaseDatabase.getInstance();
 
