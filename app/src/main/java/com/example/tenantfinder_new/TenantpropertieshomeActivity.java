@@ -157,7 +157,7 @@ System.out.println((descriptionfularr[1]));
 
                     reference = rootNode.getReference().child("properties");
 
-                    reference.child("Bangalore/HSR Layout/" + propertiesdatasub.get(5) + "/satya's house").setValue(userdata, new DatabaseReference.CompletionListener() {
+                    reference.child("Bangalore/HSRLayout/" + propertiesdatasub.get(5) + "/"+propertyname).setValue(userdata, new DatabaseReference.CompletionListener() {
                         @Override
                         public void onComplete(DatabaseError error, DatabaseReference ref) {
                             System.err.println("Value was set. Error = " + error);
