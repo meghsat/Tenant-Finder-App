@@ -37,10 +37,11 @@ public class  MainActivity extends AppCompatActivity {
         newuser = (TextView) findViewById(R.id.newuser);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.phonenumber);
-        String username2 = username.getText().toString().trim();
-        String password2 = password.getText().toString().trim();
+
 
             login.setOnClickListener((view) -> {
+                String username2 = username.getText().toString().trim();
+                String password2 = password.getText().toString().trim();
 if(!(username2.isEmpty()||password2.isEmpty()))
 {
                 rootNode = FirebaseDatabase.getInstance();
