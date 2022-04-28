@@ -162,15 +162,27 @@ sqft=(EditText) findViewById(R.id.sqft);
             city2=city.getSelectedItem().toString();
             locality2=locality.getSelectedItem().toString();
             furnished2=furnishing.getSelectedItem().toString().replaceAll(" ","");
-            rootNode = FirebaseDatabase.getInstance();
-            reference = rootNode.getReference("properties");
-            uploadImage();
+            if (!(imageUri==null||propertyname2.isEmpty() || address2.isEmpty() || rent2.isEmpty() || bhk2.isEmpty() || sqft2.isEmpty() || city2.isEmpty() ||locality2.isEmpty()||furnished2.isEmpty()))
+            {
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("properties");
+                uploadImage();
 
-            GetProperties propertydata = new GetProperties(propertyname2, address2, rent2, bhk2,sqft2,city2,locality2,furnished2,type);
-            // System.out.println(userdata);
-            // System.out.println(reference);
+                GetProperties propertydata = new GetProperties(propertyname2, address2, rent2, bhk2,sqft2,city2,locality2,furnished2,type);
+                // System.out.println(userdata);
+                // System.out.println(reference);
 
-            reference.child(city2).child(locality2).child(usernamee).child(propertyname2).setValue(propertydata);
+                reference.child(city2).child(locality2).child(usernamee).child(propertyname2).setValue(propertydata);
+                Toast.makeText(AddNewPropertyActivity.this, "Property Added Successfully ", Toast.LENGTH_SHORT).show();
+
+                Intent ownerintent = new Intent(AddNewPropertyActivity.this, OwnerActivity.class);
+                startActivity(ownerintent);
+            }
+             else
+            {
+                Toast.makeText(AddNewPropertyActivity.this, "None of the fields should be empty", Toast.LENGTH_SHORT).show();
+
+            }
         });
     }
     private void uploadImage(){

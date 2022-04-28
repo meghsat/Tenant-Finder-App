@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4E0202"
-    android:backgroundTint="#C1BEBE">
+    android:backgroundTint="#780303">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:background="@drawable/horizontallayoutbg"
         android:backgroundTint="#F3F2F2"
         tools:layout_editor_absoluteX="5dp"
@@ -19,13 +19,24 @@
         <Button
             android:id="@+id/submitchanges"
             android:layout_width="145dp"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:layout_below="@+id/phonenumber2"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="124dp"
-            android:layout_marginTop="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="23dp"
             android:text="Submit Changes"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="145dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="58dp"
+            android:text="Logout"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
@@ -72,6 +83,30 @@
             android:background="@null"
             android:textSize="16sp" />
 
+        <EditText
+            android:id="@+id/password2"
+            android:layout_width="176dp"
+            android:layout_height="36dp"
+            android:layout_below="@+id/emailid2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="13dp"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/phonenumber2"
+            android:layout_width="186dp"
+            android:layout_height="36dp"
+            android:layout_below="@+id/emailid2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="15dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="16sp" />
+
         <ImageView
             android:id="@+id/editprofile"
             android:layout_width="45dp"
@@ -92,6 +127,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:text="Email Id"
+            android:textColor="#070000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -105,6 +141,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:text="Last Name"
+            android:textColor="#070000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -118,7 +155,17 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="105dp"
             android:text="User Name"
+            android:textColor="#0C0000"
             android:textSize="20sp" />
+
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="60dp"-->
+        <!--            android:layout_below="@+id/emailid2"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:layout_marginTop="50dp"-->
+        <!--            android:layout_marginEnd="13dp"-->
+        <!--            app:passwordToggleEnabled="true">-->
 
         <TextView
             android:id="@+id/textView14"
@@ -129,9 +176,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:text="First Name"
+            android:textColor="#0B0000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <!--      </com.google.android.material.textfield.TextInputLayout>-->
 
         <TextView
             android:id="@+id/welcomeuser2"
@@ -154,31 +203,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:text="Password"
+            android:textColor="#070000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:layout_below="@+id/emailid2"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:layout_marginEnd="13dp"-->
-<!--            app:passwordToggleEnabled="true">-->
-
-            <EditText
-                android:id="@+id/password2"
-                android:layout_width="176dp"
-                android:layout_height="36dp"
-                android:layout_below="@+id/emailid2"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="13dp"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:textSize="16sp" />
-<!--      </com.google.android.material.textfield.TextInputLayout>-->
 
         <TextView
             android:id="@+id/textView2"
@@ -189,19 +217,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:text="Phone Number"
+            android:textColor="#050000"
             android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/phonenumber2"
-            android:layout_width="186dp"
-            android:layout_height="36dp"
-            android:layout_below="@+id/emailid2"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="140dp"
-            android:layout_marginEnd="15dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="16sp" />
 
 
     </RelativeLayout>

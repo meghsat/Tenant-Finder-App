@@ -21,7 +21,7 @@ public class UserprofileActivity extends AppCompatActivity {
     TextView welcomeuser2;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-    Button submitchanges;
+    Button submitchanges,logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,11 @@ public class UserprofileActivity extends AppCompatActivity {
 welcomeuser2=(TextView) findViewById(R.id.welcomeuser2);
 welcomeuser2.setText("Welcome "+usernamee);
 submitchanges=(Button) findViewById(R.id.submitchanges);
-
+logout =(Button) findViewById(R.id.logout);
+logout.setOnClickListener((view)->{
+    Intent logoutintent = new Intent(UserprofileActivity.this, MainActivity.class);
+    startActivity(logoutintent);
+});
 submitchanges.setOnClickListener((view)->{
     UserDataRegister userdata=new UserDataRegister(emailid2.getText().toString(),username2.getText().toString(),password2.getText().toString(),password2.getText().toString(),firstname2.getText().toString(),lastname2.getText().toString(),phonenumber2.getText().toString().trim());
     reference.child(usernamee).setValue(userdata,new DatabaseReference.CompletionListener() {

@@ -30,50 +30,53 @@ public class  MainActivity extends AppCompatActivity {
         TextView newuser2 = (TextView) findViewById(R.id.newuser);
         newuser2.setOnClickListener((view) ->
         {
-            Intent registerintent=new Intent(MainActivity.this,RegisterActivity.class);
+            Intent registerintent = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(registerintent);
         });
-        login=(Button) findViewById(R.id.login);
-        newuser=(TextView) findViewById(R.id.newuser);
-        username=(EditText) findViewById(R.id.username);
-        password=(EditText) findViewById(R.id.phonenumber);
+        login = (Button) findViewById(R.id.login);
+        newuser = (TextView) findViewById(R.id.newuser);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.phonenumber);
+        String username2 = username.getText().toString().trim();
+        String password2 = password.getText().toString().trim();
 
-        login.setOnClickListener((view) ->{
-            String username2=username.getText().toString().trim();
-            String password2=password.getText().toString().trim();
-            rootNode=FirebaseDatabase.getInstance();
-            reference=rootNode.getReference().child("users");
-
-           reference.addValueEventListener(new ValueEventListener() {
-               @Override
-               public void onDataChange(@NonNull DataSnapshot snapshot) {
-                   if(snapshot.child(username2).exists())
-                   {
-                       if(password2.equals((snapshot.child(username2).child("password2").getValue(String.class))))
-                       {
-                           //System.out.println("boo");
-                           Intent homeintent=new Intent(MainActivity.this,HomeActivity.class);
-                           homeintent.putExtra("username",username2);
-                           startActivity(homeintent);
-                       }
-                       else
-                       {
-                           Toast.makeText(MainActivity.this, "Password Incorrect",Toast.LENGTH_SHORT).show();
-                       }
-                   }
-                    else{
-                       Toast.makeText(MainActivity.this, "User Not Found, Please Register",Toast.LENGTH_SHORT).show();
-                   }
-               }
-
-               @Override
-               public void onCancelled(@NonNull DatabaseError error) {
-
-               }
-           });
+            login.setOnClickListener((view) -> {
+if(!(username2.isEmpty()||password2.isEmpty()))
 {
-    
-}
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference().child("users");
+
+                reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.child(username2).exists()) {
+                            if (password2.equals((snapshot.child(username2).child("password2").getValue(String.class)))) {
+                                //System.out.println("boo");
+                                Intent homeintent = new Intent(MainActivity.this, HomeActivity.class);
+                                homeintent.putExtra("username", username2);
+                                startActivity(homeintent);
+                            } else {
+                                Toast.makeText(MainActivity.this, "Password Incorrect", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(MainActivity.this, "User Not Found, Please Register", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                {
+
+                }
+            }
+    else
+        {
+            Toast.makeText(MainActivity.this, "None of the fields should be empty", Toast.LENGTH_SHORT).show();
+
+        }
             });
-    }
-}
+
+}}
