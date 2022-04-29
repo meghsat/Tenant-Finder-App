@@ -11,13 +11,13 @@
         android:id="@+id/addnewproperty"
         android:layout_width="190dp"
         android:layout_height="73dp"
-        android:layout_marginTop="8dp"
-        android:text="Add A Property"
+        android:layout_marginTop="12dp"
+        android:text="Add Property"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeuser" />
 
     <ImageView
         android:id="@+id/userprofile"
@@ -47,11 +47,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvownerproperties"
         android:layout_width="333dp"
-        android:layout_height="483dp"
+        android:layout_height="433dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/horizontallayoutbg2"
 
         android:orientation="horizontal"
@@ -61,18 +61,26 @@
         app:layout_constraintTop_toBottomOf="@+id/addnewproperty"
         app:layout_constraintVertical_bias="0.622" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="196dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="8dp"
-        android:text="Your Properties"
-        android:textColor="#0E0606"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.695"
+    <Spinner
+        android:id="@+id/city"
+        android:layout_width="159dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/locality"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeuser" />
+        app:layout_constraintTop_toBottomOf="@+id/addnewproperty" />
+
+    <Spinner
+        android:id="@+id/locality"
+        android:layout_width="159dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.786"
+        app:layout_constraintStart_toEndOf="@+id/city"
+        app:layout_constraintTop_toBottomOf="@+id/addnewproperty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
